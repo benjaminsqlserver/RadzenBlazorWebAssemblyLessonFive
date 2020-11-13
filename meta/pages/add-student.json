@@ -1,0 +1,1810 @@
+{
+  "access": [
+    "ClassTeacher",
+    "SchoolAdmin",
+    "SubjectTeacher",
+    "SuperAdmin"
+  ],
+  "components": [
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "class": "col-md-12",
+              "components": [
+                {
+                  "components": [
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "SchoolAdmissionNumber",
+                              "name": "SchoolAdmissionNumberLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Admission Number *",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "maxLength": 50,
+                              "name": "SchoolAdmissionNumber",
+                              "placeholder": "Enter Student Admission Number",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${student.SchoolAdmissionNumber}",
+                              "valueType": "string"
+                            },
+                            {
+                              "component": "SchoolAdmissionNumber",
+                              "name": "SchoolAdmissionNumberRequiredValidator",
+                              "style": {
+                                "position": "absolute"
+                              },
+                              "text": "Student Admission Number is required",
+                              "type": "required-validator"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "Surname",
+                              "name": "SurnameLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Surname *",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "maxLength": 50,
+                              "name": "Surname",
+                              "placeholder": "Enter Student Surname",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${student.Surname}",
+                              "valueType": "string"
+                            },
+                            {
+                              "component": "Surname",
+                              "name": "SurnameRequiredValidator",
+                              "style": {
+                                "position": "absolute"
+                              },
+                              "text": "Surname is required",
+                              "type": "required-validator"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "FirstName",
+                              "name": "FirstNameLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "First Name *",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "maxLength": 50,
+                              "name": "FirstName",
+                              "placeholder": "Enter Student First Name",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${student.FirstName}",
+                              "valueType": "string"
+                            },
+                            {
+                              "component": "FirstName",
+                              "name": "FirstNameRequiredValidator",
+                              "style": {
+                                "position": "absolute"
+                              },
+                              "text": "First Name is required",
+                              "type": "required-validator"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "OtherNames",
+                              "name": "OtherNamesLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Other Names",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "maxLength": 101,
+                              "name": "OtherNames",
+                              "placeholder": "Enter Student Other Names",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${student.OtherNames}",
+                              "valueType": "string"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "CurrentClassID",
+                              "name": "label0",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Current Class",
+                              "type": "label"
+                            }
+                          ],
+                          "name": "col0",
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "allowClear": true,
+                              "allowFiltering": true,
+                              "data": "${getSchoolClassesResult}",
+                              "filterCaseSensitivity": "caseInsensitive",
+                              "name": "CurrentClassID",
+                              "placeholder": "Select Student Class",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "textProperty": "ClassName",
+                              "type": "dropdown",
+                              "value": "${student.CurrentClassID}",
+                              "valueProperty": "ID",
+                              "valueType": "int?"
+                            }
+                          ],
+                          "name": "col1",
+                          "type": "col"
+                        }
+                      ],
+                      "name": "row0",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "StudentPhoto",
+                              "name": "label1",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Student Photo *",
+                              "type": "label"
+                            }
+                          ],
+                          "name": "col2",
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "chooseText": "Choose Student Photo",
+                              "name": "StudentPhoto",
+                              "type": "file-input",
+                              "value": "${student.StudentPhoto}"
+                            },
+                            {
+                              "component": "StudentPhoto",
+                              "name": "requiredValidator0",
+                              "text": "Student Photo Is Required",
+                              "type": "required-validator"
+                            }
+                          ],
+                          "name": "col3",
+                          "type": "col"
+                        }
+                      ],
+                      "name": "row1",
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "GenderID",
+                              "name": "GenderIDLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Gender *",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "allowClear": true,
+                              "allowFiltering": true,
+                              "data": "${getGendersResult}",
+                              "filterCaseSensitivity": "caseInsensitive",
+                              "name": "GenderID",
+                              "placeholder": "Choose Gender",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "textProperty": "GenderName",
+                              "type": "dropdown",
+                              "value": "${student.GenderID}",
+                              "valueProperty": "GenderID",
+                              "valueType": "int"
+                            },
+                            {
+                              "component": "GenderID",
+                              "defaultValue": "0",
+                              "name": "GenderIDRequiredValidator",
+                              "style": {
+                                "position": "absolute"
+                              },
+                              "text": "Gender is required",
+                              "type": "required-validator"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "NationalityID",
+                              "name": "NationalityIDLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Nationality *",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "allowClear": true,
+                              "allowFiltering": true,
+                              "data": "${getCountriesResult}",
+                              "filterCaseSensitivity": "caseInsensitive",
+                              "name": "NationalityID",
+                              "placeholder": "Choose Country",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "textProperty": "CountryName",
+                              "type": "dropdown",
+                              "value": "${student.NationalityID}",
+                              "valueProperty": "CountryID",
+                              "valueType": "int"
+                            },
+                            {
+                              "component": "NationalityID",
+                              "defaultValue": "0",
+                              "name": "NationalityIDRequiredValidator",
+                              "style": {
+                                "position": "absolute"
+                              },
+                              "text": "Student Nationality is required",
+                              "type": "required-validator"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "Username",
+                              "name": "UsernameLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Username *",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "maxLength": 50,
+                              "name": "Username",
+                              "placeholder": "Enter Student Username",
+                              "style": {
+                                "display": "block",
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${student.Username}",
+                              "valueType": "string"
+                            },
+                            {
+                              "component": "Username",
+                              "name": "UsernameRequiredValidator",
+                              "style": {
+                                "position": "absolute"
+                              },
+                              "text": "Username is required",
+                              "type": "required-validator"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "Password",
+                              "name": "PasswordLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Password *",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "name": "Password",
+                              "placeholder": "Enter Password",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "password",
+                              "value": "${student.Password}"
+                            },
+                            {
+                              "component": "Password",
+                              "name": "requiredValidator1",
+                              "text": "Password Is Required",
+                              "type": "required-validator"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "ConfirmPassword",
+                              "name": "ConfirmPasswordLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Confirm Password *",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "name": "ConfirmPassword",
+                              "placeholder": "Re-Enter Password",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "password",
+                              "value": "${student.ConfirmPassword}"
+                            },
+                            {
+                              "component": "ConfirmPassword",
+                              "name": "requiredValidator2",
+                              "text": "Confirm Password Is Required",
+                              "type": "required-validator"
+                            },
+                            {
+                              "component": "ConfirmPassword",
+                              "name": "compareValidator0",
+                              "operator": "CompareOperator.Equal",
+                              "type": "compare-validator",
+                              "value": "${student.Password}"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "FatherSurname",
+                              "name": "FatherSurnameLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Father Surname",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "maxLength": 50,
+                              "name": "FatherSurname",
+                              "placeholder": "Enter Father Surname",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${student.FatherSurname}",
+                              "valueType": "string"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "FatherFirstName",
+                              "name": "FatherFirstNameLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Father First Name",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "maxLength": 50,
+                              "name": "FatherFirstName",
+                              "placeholder": "Enter Father First Name",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${student.FatherFirstName}",
+                              "valueType": "string"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "FatherOtherNames",
+                              "name": "FatherOtherNamesLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Father Other Names",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "maxLength": 101,
+                              "name": "FatherOtherNames",
+                              "placeholder": "Enter Father Other Names",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${student.FatherOtherNames}",
+                              "valueType": "string"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "FatherNationalityID",
+                              "name": "FatherNationalityIDLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Father Nationality",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "allowClear": true,
+                              "allowFiltering": true,
+                              "data": "${getCountriesResult}",
+                              "filterCaseSensitivity": "caseInsensitive",
+                              "name": "FatherNationalityID",
+                              "placeholder": "Choose Father Nationality",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "textProperty": "CountryName",
+                              "type": "dropdown",
+                              "value": "${student.FatherNationalityID}",
+                              "valueProperty": "CountryID",
+                              "valueType": "int?"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "FatherEmail",
+                              "name": "FatherEmailLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Father Email",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "maxLength": 50,
+                              "name": "FatherEmail",
+                              "placeholder": "Enter Father Email Address",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${student.FatherEmail}",
+                              "valueType": "string"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "FatherTelephone",
+                              "name": "FatherTelephoneLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Father Telephone",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "maxLength": 50,
+                              "name": "FatherTelephone",
+                              "placeholder": "Enter Father Telephone Number",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${student.FatherTelephone}",
+                              "valueType": "string"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "FatherProfession",
+                              "name": "FatherProfessionLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Father Profession",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "maxLength": 50,
+                              "name": "FatherProfession",
+                              "placeholder": "Enter Father Profession",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${student.FatherProfession}",
+                              "valueType": "string"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "FatherOffice",
+                              "name": "FatherOfficeLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Father Office",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "maxLength": 100,
+                              "name": "FatherOffice",
+                              "placeholder": "Enter The Name Of Student's Father Office",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${student.FatherOffice}",
+                              "valueType": "string"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "FatherResidentialAddress",
+                              "name": "FatherResidentialAddressLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Father Residential Address",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "name": "FatherResidentialAddress",
+                              "placeholder": "Enter Student's Father Residential Address",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${student.FatherResidentialAddress}",
+                              "valueType": "string"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "MotherSurname",
+                              "name": "MotherSurnameLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Mother Surname",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "maxLength": 50,
+                              "name": "MotherSurname",
+                              "placeholder": "Enter Mother Surname",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${student.MotherSurname}",
+                              "valueType": "string"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "MotherFirstName",
+                              "name": "MotherFirstNameLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Mother First Name",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "maxLength": 50,
+                              "name": "MotherFirstName",
+                              "placeholder": "Enter Mother First Name",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${student.MotherFirstName}",
+                              "valueType": "string"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "MotherOtherNames",
+                              "name": "MotherOtherNamesLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Mother Other Names",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "maxLength": 101,
+                              "name": "MotherOtherNames",
+                              "placeholder": "Enter Mother Other Names",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${student.MotherOtherNames}",
+                              "valueType": "string"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "MotherNationalityID",
+                              "name": "MotherNationalityIDLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Mother Nationality",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "allowClear": true,
+                              "allowFiltering": true,
+                              "data": "${getCountriesResult}",
+                              "filterCaseSensitivity": "caseInsensitive",
+                              "name": "MotherNationalityID",
+                              "placeholder": "Choose Mother's Nationality",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "textProperty": "CountryName",
+                              "type": "dropdown",
+                              "value": "${student.MotherNationalityID}",
+                              "valueProperty": "CountryID",
+                              "valueType": "int?"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "MotherEmail",
+                              "name": "MotherEmailLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Mother Email",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "maxLength": 50,
+                              "name": "MotherEmail",
+                              "placeholder": "Enter Student's Mother Email Address",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${student.MotherEmail}",
+                              "valueType": "string"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "MotherTelephone",
+                              "name": "MotherTelephoneLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Mother Telephone",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "maxLength": 50,
+                              "name": "MotherTelephone",
+                              "placeholder": "Enter Mother's Telephone Number",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${student.MotherTelephone}",
+                              "valueType": "string"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "MotherProfession",
+                              "name": "MotherProfessionLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Mother Profession",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "maxLength": 50,
+                              "name": "MotherProfession",
+                              "placeholder": "Enter Studen's Mother Profession",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${student.MotherProfession}",
+                              "valueType": "string"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "MotherOffice",
+                              "name": "MotherOfficeLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Mother Office",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "maxLength": 100,
+                              "name": "MotherOffice",
+                              "placeholder": "Enter The Name Of Student's Mother Office",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${student.MotherOffice}",
+                              "valueType": "string"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "MotherResidentialAddress",
+                              "name": "MotherResidentialAddressLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Mother Residential Address",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "name": "MotherResidentialAddress",
+                              "placeholder": "Enter Student's Mother Residential Address",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${student.MotherResidentialAddress}",
+                              "valueType": "string"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "GuardianSurname",
+                              "name": "GuardianSurnameLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Guardian Surname",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "maxLength": 50,
+                              "name": "GuardianSurname",
+                              "placeholder": "Enter Guardian Surname",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${student.GuardianSurname}",
+                              "valueType": "string"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "GuardianFirstName",
+                              "name": "GuardianFirstNameLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Guardian First Name",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "maxLength": 50,
+                              "name": "GuardianFirstName",
+                              "placeholder": "Enter Guardian First Name",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${student.GuardianFirstName}",
+                              "valueType": "string"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "GuardianOtherNames",
+                              "name": "GuardianOtherNamesLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Guardian Other Names",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "maxLength": 101,
+                              "name": "GuardianOtherNames",
+                              "placeholder": "Enter Guardian's Other Names",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${student.GuardianOtherNames}",
+                              "valueType": "string"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "GuardianNationalityID",
+                              "name": "GuardianNationalityIDLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Guardian Nationality",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "allowClear": true,
+                              "allowFiltering": true,
+                              "data": "${getCountriesResult}",
+                              "filterCaseSensitivity": "caseInsensitive",
+                              "name": "GuardianNationalityID",
+                              "placeholder": "Choose Guardian's Nationality",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "textProperty": "CountryName",
+                              "type": "dropdown",
+                              "value": "${student.GuardianNationalityID}",
+                              "valueProperty": "CountryID",
+                              "valueType": "int?"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "GuardianEmail",
+                              "name": "GuardianEmailLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Guardian Email",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "maxLength": 50,
+                              "name": "GuardianEmail",
+                              "placeholder": "Enter Guardian's Email Address",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${student.GuardianEmail}",
+                              "valueType": "string"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "GuardianTelephone",
+                              "name": "GuardianTelephoneLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Guardian Telephone",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "maxLength": 50,
+                              "name": "GuardianTelephone",
+                              "placeholder": "Enter Guardian's Telephone Number",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${student.GuardianTelephone}",
+                              "valueType": "string"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "GuardianProfession",
+                              "name": "GuardianProfessionLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Guardian Profession",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "maxLength": 50,
+                              "name": "GuardianProfession",
+                              "placeholder": "Enter Guardian's Profession",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${student.GuardianProfession}",
+                              "valueType": "string"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "GuardianOffice",
+                              "name": "GuardianOfficeLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Guardian Office",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "maxLength": 100,
+                              "name": "GuardianOffice",
+                              "placeholder": "Enter The Name Of Guardian's Office",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${student.GuardianOffice}",
+                              "valueType": "string"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col-md-3",
+                          "components": [
+                            {
+                              "component": "GuardianResidentialAddress",
+                              "name": "GuardianResidentialAddressLabel",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "text": "Guardian Residential Address",
+                              "type": "label"
+                            }
+                          ],
+                          "type": "col"
+                        },
+                        {
+                          "class": "col-md-9",
+                          "components": [
+                            {
+                              "autoComplete": false,
+                              "name": "GuardianResidentialAddress",
+                              "placeholder": "Enter Student's Guardian Residential Address",
+                              "style": {
+                                "width": "100%"
+                              },
+                              "type": "textbox",
+                              "value": "${student.GuardianResidentialAddress}",
+                              "valueType": "string"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "style": {
+                        "marginBottom": "1rem"
+                      },
+                      "type": "row"
+                    },
+                    {
+                      "components": [
+                        {
+                          "class": "col offset-sm-3",
+                          "components": [
+                            {
+                              "buttonStyle": "primary",
+                              "buttonType": "submit",
+                              "icon": "save",
+                              "text": "Save",
+                              "type": "button"
+                            },
+                            {
+                              "buttonStyle": "light",
+                              "events": {
+                                "click": [
+                                  {
+                                    "type": "close-popup"
+                                  }
+                                ]
+                              },
+                              "style": {
+                                "marginLeft": "1rem"
+                              },
+                              "text": "Cancel",
+                              "type": "button"
+                            }
+                          ],
+                          "type": "col"
+                        }
+                      ],
+                      "type": "row"
+                    }
+                  ],
+                  "data": "${student}",
+                  "events": {
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to create new Student!",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "conData.createStudent",
+                        "parameters": [
+                          {
+                            "name": "Student",
+                            "value": "${student}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "result": "${student}",
+                            "type": "close-popup"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "itemType": "CaApp.Models.ConData.Student",
+                  "name": "form0",
+                  "type": "template-form",
+                  "visible": "${student != null}"
+                }
+              ],
+              "type": "col"
+            }
+          ],
+          "type": "row"
+        }
+      ],
+      "container": "main",
+      "type": "content"
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "conData.getGenders",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getGendersResult",
+            "type": "set",
+            "value": "${result.Value.AsODataEnumerable()}",
+            "valueType": "IEnumerable<CaApp.Models.ConData.Gender>"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "conData.getCountries",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getCountriesResult",
+            "type": "set",
+            "value": "${result.Value.AsODataEnumerable()}",
+            "valueType": "IEnumerable<CaApp.Models.ConData.Country>"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "student",
+        "type": "set",
+        "value": "new CaApp.Models.ConData.Student(){}",
+        "valueType": "CaApp.Models.ConData.Student"
+      },
+      {
+        "name": "conData.getSchoolClasses",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getSchoolClassesResult",
+            "type": "set",
+            "value": "${result.Value.AsODataEnumerable()}",
+            "valueType": "IEnumerable<CaApp.Models.ConData.SchoolClass>"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "layout": "Main",
+  "name": "Add Student"
+}

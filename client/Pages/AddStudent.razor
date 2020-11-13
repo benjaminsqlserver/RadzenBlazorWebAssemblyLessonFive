@@ -1,0 +1,433 @@
+﻿@page "/add-student"
+@layout MainLayout
+@inherits CaApp.Pages.AddStudentComponent
+
+@using Radzen
+@using Radzen.Blazor
+@using CaApp.Models.ConData
+@using Microsoft.AspNetCore.Identity;
+@using CaApp.Models
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Roles="ClassTeacher, SchoolAdmin, SubjectTeacher, SuperAdmin")]
+
+
+<RadzenContent Container="main">
+  <ChildContent>
+    <div class="row">
+      <div class="col-md-12">
+        <RadzenTemplateForm Data="@student" TItem="CaApp.Models.ConData.Student" Visible="@(student != null)" Submit="@Form0Submit">
+          <ChildContent>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="SchoolAdmissionNumber" style="width: 100%" Text="Admission Number *">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox AutoComplete="false" MaxLength="50" Placeholder="Enter Student Admission Number" style="display: block; width: 100%" @bind-Value="@(student.SchoolAdmissionNumber)" Name="SchoolAdmissionNumber">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="SchoolAdmissionNumber" style="position: absolute" Text="Student Admission Number is required">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="Surname" style="width: 100%" Text="Surname *">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox AutoComplete="false" MaxLength="50" Placeholder="Enter Student Surname" style="display: block; width: 100%" @bind-Value="@(student.Surname)" Name="Surname">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="Surname" style="position: absolute" Text="Surname is required">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="FirstName" style="width: 100%" Text="First Name *">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox AutoComplete="false" MaxLength="50" Placeholder="Enter Student First Name" style="display: block; width: 100%" @bind-Value="@(student.FirstName)" Name="FirstName">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="FirstName" style="position: absolute" Text="First Name is required">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="OtherNames" style="width: 100%" Text="Other Names">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox AutoComplete="false" MaxLength="101" Placeholder="Enter Student Other Names" style="width: 100%" @bind-Value="@(student.OtherNames)" Name="OtherNames">
+                </RadzenTextBox>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="CurrentClassID" style="width: 100%" Text="Current Class">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDown AllowClear="true" AllowFiltering="true" Data="@getSchoolClassesResult" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" Placeholder="Select Student Class" style="width: 100%" TextProperty="ClassName" @bind-Value="@(student.CurrentClassID)" ValueProperty="ID" Name="CurrentClassID">
+                </RadzenDropDown>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="StudentPhoto" style="width: 100%" Text="Student Photo *">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenFileInput ChooseText="Choose Student Photo" @bind-Value="@(student.StudentPhoto)" Name="StudentPhoto">
+                </RadzenFileInput>
+                <RadzenRequiredValidator Component="StudentPhoto" Text="Student Photo Is Required">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="GenderID" style="width: 100%" Text="Gender *">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDown AllowClear="true" AllowFiltering="true" Data="@getGendersResult" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" Placeholder="Choose Gender" style="display: block; width: 100%" TextProperty="GenderName" @bind-Value="@(student.GenderID)" ValueProperty="GenderID" Name="GenderID">
+                </RadzenDropDown>
+                <RadzenRequiredValidator Component="GenderID" DefaultValue="0" style="position: absolute" Text="Gender is required">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="NationalityID" style="width: 100%" Text="Nationality *">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDown AllowClear="true" AllowFiltering="true" Data="@getCountriesResult" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" Placeholder="Choose Country" style="display: block; width: 100%" TextProperty="CountryName" @bind-Value="@(student.NationalityID)" ValueProperty="CountryID" Name="NationalityID">
+                </RadzenDropDown>
+                <RadzenRequiredValidator Component="NationalityID" DefaultValue="0" style="position: absolute" Text="Student Nationality is required">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="Username" style="width: 100%" Text="Username *">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox AutoComplete="false" MaxLength="50" Placeholder="Enter Student Username" style="display: block; width: 100%" @bind-Value="@(student.Username)" Name="Username">
+                </RadzenTextBox>
+                <RadzenRequiredValidator Component="Username" style="position: absolute" Text="Username is required">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="Password" style="width: 100%" Text="Password *">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenPassword AutoComplete="false" Placeholder="Enter Password" style="width: 100%" @bind-Value="@(student.Password)" Name="Password">
+                </RadzenPassword>
+                <RadzenRequiredValidator Component="Password" Text="Password Is Required">
+                </RadzenRequiredValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="ConfirmPassword" style="width: 100%" Text="Confirm Password *">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenPassword AutoComplete="false" Placeholder="Re-Enter Password" style="width: 100%" @bind-Value="@(student.ConfirmPassword)" Name="ConfirmPassword">
+                </RadzenPassword>
+                <RadzenRequiredValidator Component="ConfirmPassword" Text="Confirm Password Is Required">
+                </RadzenRequiredValidator>
+                <RadzenCompareValidator Component="ConfirmPassword" Operator="CompareOperator.Equal" Value="@(student.Password)">
+                </RadzenCompareValidator>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="FatherSurname" style="width: 100%" Text="Father Surname">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox AutoComplete="false" MaxLength="50" Placeholder="Enter Father Surname" style="width: 100%" @bind-Value="@(student.FatherSurname)" Name="FatherSurname">
+                </RadzenTextBox>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="FatherFirstName" style="width: 100%" Text="Father First Name">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox AutoComplete="false" MaxLength="50" Placeholder="Enter Father First Name" style="width: 100%" @bind-Value="@(student.FatherFirstName)" Name="FatherFirstName">
+                </RadzenTextBox>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="FatherOtherNames" style="width: 100%" Text="Father Other Names">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox AutoComplete="false" MaxLength="101" Placeholder="Enter Father Other Names" style="width: 100%" @bind-Value="@(student.FatherOtherNames)" Name="FatherOtherNames">
+                </RadzenTextBox>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="FatherNationalityID" style="width: 100%" Text="Father Nationality">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDown AllowClear="true" AllowFiltering="true" Data="@getCountriesResult" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" Placeholder="Choose Father Nationality" style="width: 100%" TextProperty="CountryName" @bind-Value="@(student.FatherNationalityID)" ValueProperty="CountryID" Name="FatherNationalityID">
+                </RadzenDropDown>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="FatherEmail" style="width: 100%" Text="Father Email">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox AutoComplete="false" MaxLength="50" Placeholder="Enter Father Email Address" style="width: 100%" @bind-Value="@(student.FatherEmail)" Name="FatherEmail">
+                </RadzenTextBox>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="FatherTelephone" style="width: 100%" Text="Father Telephone">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox AutoComplete="false" MaxLength="50" Placeholder="Enter Father Telephone Number" style="width: 100%" @bind-Value="@(student.FatherTelephone)" Name="FatherTelephone">
+                </RadzenTextBox>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="FatherProfession" style="width: 100%" Text="Father Profession">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox AutoComplete="false" MaxLength="50" Placeholder="Enter Father Profession" style="width: 100%" @bind-Value="@(student.FatherProfession)" Name="FatherProfession">
+                </RadzenTextBox>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="FatherOffice" style="width: 100%" Text="Father Office">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox AutoComplete="false" MaxLength="100" Placeholder="Enter The Name Of Student's Father Office" style="width: 100%" @bind-Value="@(student.FatherOffice)" Name="FatherOffice">
+                </RadzenTextBox>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="FatherResidentialAddress" style="width: 100%" Text="Father Residential Address">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox AutoComplete="false" Placeholder="Enter Student's Father Residential Address" style="width: 100%" @bind-Value="@(student.FatherResidentialAddress)" Name="FatherResidentialAddress">
+                </RadzenTextBox>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="MotherSurname" style="width: 100%" Text="Mother Surname">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox AutoComplete="false" MaxLength="50" Placeholder="Enter Mother Surname" style="width: 100%" @bind-Value="@(student.MotherSurname)" Name="MotherSurname">
+                </RadzenTextBox>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="MotherFirstName" style="width: 100%" Text="Mother First Name">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox AutoComplete="false" MaxLength="50" Placeholder="Enter Mother First Name" style="width: 100%" @bind-Value="@(student.MotherFirstName)" Name="MotherFirstName">
+                </RadzenTextBox>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="MotherOtherNames" style="width: 100%" Text="Mother Other Names">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox AutoComplete="false" MaxLength="101" Placeholder="Enter Mother Other Names" style="width: 100%" @bind-Value="@(student.MotherOtherNames)" Name="MotherOtherNames">
+                </RadzenTextBox>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="MotherNationalityID" style="width: 100%" Text="Mother Nationality">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDown AllowClear="true" AllowFiltering="true" Data="@getCountriesResult" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" Placeholder="Choose Mother's Nationality" style="width: 100%" TextProperty="CountryName" @bind-Value="@(student.MotherNationalityID)" ValueProperty="CountryID" Name="MotherNationalityID">
+                </RadzenDropDown>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="MotherEmail" style="width: 100%" Text="Mother Email">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox AutoComplete="false" MaxLength="50" Placeholder="Enter Student's Mother Email Address" style="width: 100%" @bind-Value="@(student.MotherEmail)" Name="MotherEmail">
+                </RadzenTextBox>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="MotherTelephone" style="width: 100%" Text="Mother Telephone">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox AutoComplete="false" MaxLength="50" Placeholder="Enter Mother's Telephone Number" style="width: 100%" @bind-Value="@(student.MotherTelephone)" Name="MotherTelephone">
+                </RadzenTextBox>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="MotherProfession" style="width: 100%" Text="Mother Profession">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox AutoComplete="false" MaxLength="50" Placeholder="Enter Studen's Mother Profession" style="width: 100%" @bind-Value="@(student.MotherProfession)" Name="MotherProfession">
+                </RadzenTextBox>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="MotherOffice" style="width: 100%" Text="Mother Office">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox AutoComplete="false" MaxLength="100" Placeholder="Enter The Name Of Student's Mother Office" style="width: 100%" @bind-Value="@(student.MotherOffice)" Name="MotherOffice">
+                </RadzenTextBox>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="MotherResidentialAddress" style="width: 100%" Text="Mother Residential Address">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox AutoComplete="false" Placeholder="Enter Student's Mother Residential Address" style="width: 100%" @bind-Value="@(student.MotherResidentialAddress)" Name="MotherResidentialAddress">
+                </RadzenTextBox>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="GuardianSurname" style="width: 100%" Text="Guardian Surname">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox AutoComplete="false" MaxLength="50" Placeholder="Enter Guardian Surname" style="width: 100%" @bind-Value="@(student.GuardianSurname)" Name="GuardianSurname">
+                </RadzenTextBox>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="GuardianFirstName" style="width: 100%" Text="Guardian First Name">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox AutoComplete="false" MaxLength="50" Placeholder="Enter Guardian First Name" style="width: 100%" @bind-Value="@(student.GuardianFirstName)" Name="GuardianFirstName">
+                </RadzenTextBox>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="GuardianOtherNames" style="width: 100%" Text="Guardian Other Names">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox AutoComplete="false" MaxLength="101" Placeholder="Enter Guardian's Other Names" style="width: 100%" @bind-Value="@(student.GuardianOtherNames)" Name="GuardianOtherNames">
+                </RadzenTextBox>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="GuardianNationalityID" style="width: 100%" Text="Guardian Nationality">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenDropDown AllowClear="true" AllowFiltering="true" Data="@getCountriesResult" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" Placeholder="Choose Guardian's Nationality" style="width: 100%" TextProperty="CountryName" @bind-Value="@(student.GuardianNationalityID)" ValueProperty="CountryID" Name="GuardianNationalityID">
+                </RadzenDropDown>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="GuardianEmail" style="width: 100%" Text="Guardian Email">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox AutoComplete="false" MaxLength="50" Placeholder="Enter Guardian's Email Address" style="width: 100%" @bind-Value="@(student.GuardianEmail)" Name="GuardianEmail">
+                </RadzenTextBox>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="GuardianTelephone" style="width: 100%" Text="Guardian Telephone">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox AutoComplete="false" MaxLength="50" Placeholder="Enter Guardian's Telephone Number" style="width: 100%" @bind-Value="@(student.GuardianTelephone)" Name="GuardianTelephone">
+                </RadzenTextBox>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="GuardianProfession" style="width: 100%" Text="Guardian Profession">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox AutoComplete="false" MaxLength="50" Placeholder="Enter Guardian's Profession" style="width: 100%" @bind-Value="@(student.GuardianProfession)" Name="GuardianProfession">
+                </RadzenTextBox>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="GuardianOffice" style="width: 100%" Text="Guardian Office">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox AutoComplete="false" MaxLength="100" Placeholder="Enter The Name Of Guardian's Office" style="width: 100%" @bind-Value="@(student.GuardianOffice)" Name="GuardianOffice">
+                </RadzenTextBox>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem" class="row">
+              <div class="col-md-3">
+                <RadzenLabel Component="GuardianResidentialAddress" style="width: 100%" Text="Guardian Residential Address">
+                </RadzenLabel>
+              </div>
+              <div class="col-md-9">
+                <RadzenTextBox AutoComplete="false" Placeholder="Enter Student's Guardian Residential Address" style="width: 100%" @bind-Value="@(student.GuardianResidentialAddress)" Name="GuardianResidentialAddress">
+                </RadzenTextBox>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col offset-sm-3">
+                <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Icon="save" Text="Save">
+                </RadzenButton>
+                <RadzenButton ButtonStyle="ButtonStyle.Light" style="margin-left: 1rem" Text="Cancel" Click="@Button2Click">
+                </RadzenButton>
+              </div>
+            </div>
+          </ChildContent>
+        </RadzenTemplateForm>
+      </div>
+    </div>
+  </ChildContent>
+</RadzenContent>
